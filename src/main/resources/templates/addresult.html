@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>入力画面</title>
+</head>
+<body>
+　　<p>下記必要事項を記載の上、「確認」ボタンを押下してください。</p><br/>
+<form method="post" th:action="@{/confirm}" th:object="${userForm}">
+    ログインID：　<input type="text" th:value="*{loginid}" th:field="*{loginid}" />
+    username：　<input type="text" th:value="*{username}" th:field="*{username}" />
+   	パスワード：　<input type="text" th:value="*{password}" th:field="*{password}" />
+    性別：　<input type="text" th:value="*{icon}" th:field="*{icon}" />
+    コメント：　<input type="text" th:value="*{profile}" th:field="*{profile}" />
+<div class="btn_area_center"><input type="submit" value="登録" class="btn"></div>
+    </form>
+</body>
+</html>

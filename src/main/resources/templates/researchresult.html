@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="list" th:each="data:${result}">
+    <p th:text="${data.username}"></p>
+    <p th:text="'期限：' + ${data.loginid}"></p>
+    作成日：<p></p>
+</div>
+</body>
+</html>
