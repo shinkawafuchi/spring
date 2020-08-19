@@ -1,7 +1,5 @@
 package com.shantery.result2;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +14,6 @@ public class UserController {
 	UserRepository userRepository;
 	@Autowired
 	UserService userService;
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index() {
-		return "index.html";
-	}
-
 	//新規登録　入力画面
 	@RequestMapping(value = "/input", method = RequestMethod.GET)
 	public String input(UserForm userForm) {
@@ -62,10 +54,34 @@ public class UserController {
 		mav.setViewName("researchresult");
 		mav.addObject("icon", icon);
 		mav.addObject("username", username);
-		List<User> result = userService.search(icon,username);
+		//List<User> result = userService.search(icon,username);
+		//mav.addObject("result",result);
+		//mav.addObject("resultSize",result.size());
+		return mav;
+	}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String login(User user) {
+		return "login.html";
+	}
+	/*
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView logininput(ModelAndView mav, @RequestParam String loginid, @RequestParam String password) {
+		mav.addObject("loginid", loginid);
+		mav.addObject("password", password);
+
+		if(result==null) {
+		mav.setViewName("index");
 		mav.addObject("result",result);
 		mav.addObject("resultSize",result.size());
 		return mav;
+		}else {
+			mav.setViewName("top");
+			mav.addObject("result",result);
+			mav.addObject("resultSize",result.size());
+			return mav;
+		}
+
 	}
+	*/
 
 }

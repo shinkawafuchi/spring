@@ -12,8 +12,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	  public List<User> search(String username, String icon){
+	  public List<User> search(String icon){
 	        List<User> result = userRepository.findAll();
 	        return result;
 	    }
+
 }
