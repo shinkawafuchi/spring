@@ -5,10 +5,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>ようこそ</h1>
-<div class="list" th:each="data:${result}">
-    <p th:text="${data.username}"></p>
-    <p th:text="${data.loginid}"></p>
-</div>
+	<h1>ようこそ</h1>
+	<div class="user" th:each="data:${user}">
+		<p th:text="${data.username}"></p>
+		<p th:text="${data.loginid}"></p>
+	</div>
+	<a href="/researchinput">ユーザー情報を変更する</a>
 </body>
 </html>

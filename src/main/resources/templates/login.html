@@ -3,24 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<form th:action="@{/login}" th:object="${user}" th:method="post">
 		<table>
 			<tr>
 				<td>性別</td>
-				<td><input type="text" th:value="*{loginid}"
-					th:field="*{loginid}" /></td>
+				<td><input class="form-control" type="text" th:value="*{loginid}"
+					th:field="*{loginid}" placeholder="ログインIDを入力してください"></td>
 			</tr>
 			<tr>
 				<td>ユーザー名</td>
-				<td><input type="text" th:value="*{password}"
-					th:field="*{password}" /></td>
+				<td><input class="form-control" type="text" th:value="*{password}"
+					th:field="*{password}" placeholder="password"></td>
 			</tr>
 		</table>
-		<div class="btn_area_center">
-			<input type="submit" value="ログイン" class="btn">
+		<button type="button" class="btn btn-primary">ログイン</button>
 		</div>
 	</form>
+
 </body>
 </html>

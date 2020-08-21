@@ -5,15 +5,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form th:action="@{/researchresult}" th:method="post">
+	<form th:action="@{/researchresult}" th:object="${userForm}" th:method="post">
 		<table>
-	<tr><td>性別</td>
-				<td><input type="text" th:value="*{icon}" name="icon" /></td></tr>
-				<tr><td>ユーザー名</td>
+			<tr>
+				<td>性別</td>
+				<td><input type="radio" th:value="male" th:field="*{icon}" /><span>male</span>
+					<input type="radio" th:value="female" th:field="*{icon}" /><span>female</span></td>
+			</tr>
+			<tr>
+				<td>ユーザー名</td>
 				<td><input type="text" th:value="*{username}" name="username" /></td>
-				</tr>
+			</tr>
+				<tr>
+				<td>ログインID</td>
+				<td><input type="text" th:value="*{loginid}" name="loginid" /></td>
+			</tr>
 		</table>
-		 <div class="btn_area_center"><input type="submit" value="検索" class="btn"></div>
+		<div class="btn_area_center">
+			<input type="submit" value="検索" class="btn">
+		</div>
 	</form>
 </body>
 </html>

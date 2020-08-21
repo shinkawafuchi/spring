@@ -5,12 +5,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>検索結果画面</h1>
-<div class="list" th:each="data:${result}">
-    <p th:text="${data.username}"></p>
-    <p th:text="${data.loginid}"></p>
-     <p th:text="${data.icon}"></p>
-    作成日：<p></p>
-</div>
+	<h1>検索結果画面</h1>
+
+   <div class="container">
+      <h1>Listing Players</h1>
+      <table class="table">
+      <thead>
+          <tr>
+            <th>loginid</th>
+            <th>password</th>
+            <th>username</th>
+            <th>icon</th>
+            <th>profile</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+           <tr th:each="user:${result}">
+            <td class="center" th:text="${user.loginid}"></td>
+            <td class="center" th:text="${user.password}"></td>
+            <td class="center" th:text="${user.username}"></td>
+            <td class="center" th:text="${user.icon}"></td>
+            <td class="center" th:text="${user.profile}"></td>
+            <td class="center"><a th:href="@{/user/{user.loginid}(loginid=*{user.loginid})}">詳細</a></td>
+
+         	</tr>
+         	</tbody>
+      </table>
+      <a class="btn btn-default" href="/players/new">新規作成</a>
+    </div>
 </body>
 </html>
+
