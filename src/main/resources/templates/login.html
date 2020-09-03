@@ -6,22 +6,25 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<h1>　新規登録画面</h1>
+<a href="/in">新規登録</a>
 	<form th:action="@{/login}" th:object="${user}" th:method="post">
 		<table>
 			<tr>
-				<td>性別</td>
+				<td>loginid</td>
 				<td><input class="form-control" type="text" th:value="*{loginid}"
 					th:field="*{loginid}" placeholder="ログインIDを入力してください"></td>
+					<td><span th:if="${#fields.hasErrors('loginid')}" th:errors="*{loginid}"></span></td>
 			</tr>
 			<tr>
-				<td>ユーザー名</td>
+				<td>パスワード
+				</td>
 				<td><input class="form-control" type="text" th:value="*{password}"
 					th:field="*{password}" placeholder="password"></td>
+					<td><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span></td>
 			</tr>
 		</table>
-		<button type="button" class="btn btn-primary">ログイン</button>
-		</div>
+		<div class="btn_area_center"><input type="submit" value="ログイン" class="btn btn-outline-dark mt-3"></div>
 	</form>
-
 </body>
 </html>

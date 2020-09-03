@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>入力画面</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<h1>データ情報変更入力</h1>
+	<form th:action="@{/updeleteresult/{loginid}(loginid=*{loginid})}"
+		th:object="${user}" method="post">
+		<table class="table table-sm table-dark">
+  <thead>
+    <tr>
+   	<th scope="col">ログインID</th>
+      <th scope="col">名前</th>
+      <th scope="col">パスワード</th>
+      <th scope="col">性別</th>
+      <th scope="col">コメント</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td><p th:text="*{loginid}"></p></td>
+      <td><p th:text="*{username}"></p></td>
+      <td><p th:text="*{password}"></p></td>
+      <td><p th:text="*{icon}"></p></td>
+      <td><p th:text="*{profile}"></p></td>
+    </tr>
+    </tbody>
+    </table>
+    
+		<button class="btn btn-default" type="submit">削除</button>
+		<input type="submit" class="btn btn-outline-dark mt-3" name="back" value="戻る">
+	</form>
+</body>
+</html>

@@ -3,13 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<h1>ようこそ</h1>
 	<div class="user" th:each="data:${user}">
 		<p th:text="${data.username}"></p>
 		<p th:text="${data.loginid}"></p>
-	</div>
-	<a href="/researchinput">ユーザー情報を変更する</a>
+
+		<a href="/researchinput">ユーザー情報を変更する</a>
+
+		<h2>掲示板</h2>
+		<form th:action="@{/addshout}" th:object="${shout}" th:method="post">
+			<table>
+				<tr>
+					<td>一言</td>
+					<td><input type="text" name="shout" value="" /></td>
+				</tr>
+				<input type="hidden" name="username" th:value="${data.username}">
+				<input type="hidden" name="icon" th:value="${data.icon}">
+				</div>
+			</table>
+			<div class="btn_area_center">
+				<input type="submit" value="つぶやく" class="btn">
+			</div>
+		</form>
+		<form th:action="@{/shoutdelete}" method="post">
+			<table class="table table-bordered table-striped">
+				<tr>
+					<th>選択</th>
+					<th>コメント</th>
+					<th>名前</th>
+					<th>性別</th>
+					<th colspan="2">編集</th>
+
+				</tr>
+
+				<tr th:each="shout:${shout}">
+					<td><input type="checkbox" name="shout_id"
+						th:value="${shout.shout_id}"></td>
+					<td th:text="${shout.shout}"></td>
+					<td th:text="${shout.shout_username}"></td>
+					<td th:text="${shout.icon}"></td>
+					<!-- 追記2 -->
+					<td>
+						<form th:action="@{/userupdata}" method="post">
+							<input type="hidden" name="loginid" th:value="${shout.shout_id}">
+							<input type="submit" value="編集" class="btn">
+						</form>
+					</td>
+					<td>
+						<form th:action="@{/userdelete}" method="post">
+							<input type="submit" value="削除" class="btn"> <input
+								type="hidden" name="loginid" th:value="${shout.shout_id}">
+						</form>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="編集" class="btn">
+		</form>
 </body>
 </html>

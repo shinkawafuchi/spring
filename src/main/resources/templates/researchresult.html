@@ -3,38 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<h1>検索結果画面</h1>
 
    <div class="container">
       <h1>Listing Players</h1>
-      <table class="table">
-      <thead>
-          <tr>
-            <th>loginid</th>
-            <th>password</th>
-            <th>username</th>
-            <th>icon</th>
-            <th>profile</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-           <tr th:each="user:${result}">
-            <td class="center" th:text="${user.loginid}"></td>
-            <td class="center" th:text="${user.password}"></td>
-            <td class="center" th:text="${user.username}"></td>
-            <td class="center" th:text="${user.icon}"></td>
-            <td class="center" th:text="${user.profile}"></td>
-            <td class="center"><a th:href="@{/user/{user.loginid}(loginid=*{user.loginid})}">詳細</a></td>
+          <div class="container">
+        <!-- マージンを上下に設定 -->
+        <div class="my-5">
+        <!-- 青色ボタンを設定 -->
+        </div>
+        <hr>
+        <h1 class="my-2">顧客一覧</h1>
 
-         	</tr>
-         	</tbody>
-      </table>
-      <a class="btn btn-default" href="/players/new">新規作成</a>
+                <table class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>メールアドレス</th>
+                <th colspan="2">編集</th>
+            </tr>
+            <tr th:each="user:${result}">
+                <td th:text="${user.loginid}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.username}"></td>
+                <!-- 追記2 -->
+                <td>
+                    <form th:action="@{/userupdata}" method="post" >
+                        <input type="hidden" name="loginid" th:value="${user.loginid}">
+                        <input type="submit" value="編集" class="btn">
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/userdelete}" method="post">
+                    <input type="submit" value="削除" class="btn">
+                       <input type="hidden" name="loginid" th:value="${user.loginid}">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
     </div>
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>ユーザー新規登録</title>
+<link href="/css/add.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<meta charset="utf-8" />
+</head>
+<body>
+	<h1>ユーザー新規登録</h1>
+	<form th:action="@{/inputcomfirm}" th:object="${user}" th:method="post">
+		<table>
+			<tr>
+				<td>loginid</td>
+				<td><input type="text" th:value="*{loginid}"
+					th:field="*{loginid}" /></td>
+				<td><span th:if="${#fields.hasErrors('loginid')}"
+					th:errors="*{loginid}"></span></td>
+			</tr>
+			<tr>
+				<td>password</td>
+				<td><input type="text" th:value="*{password}"
+					th:field="*{password}" /></td>
+				<td><span th:if="${#fields.hasErrors('password')}"
+					th:errors="*{password}"></span></td>
+			</tr>
+			<tr>
+				<td>username</td>
+				<td><input type="text" th:value="*{username}"
+					th:field="*{username}" /></td>
+				<td><span th:if="${#fields.hasErrors('username')}"
+					th:errors="*{username}"></span></td>>
+			</tr>
+			<tr>
+				<td>性別</td>
+				<td><input type="radio" th:value="male" th:field="*{icon}" /><span>male</span>
+					<input type="radio" th:value="female" th:field="*{icon}" /><span>female</span></td>
+				<td><span th:if="${#fields.hasErrors('icon')}"
+					th:errors="*{icon}"></span></td>
+			</tr>
+			<tr>
+				<td>コメント</td>
+				<td><input type="text" th:value="*{profile}"
+					th:field="*{profile}" /></td>
+				<td><span th:if="${#fields.hasErrors('profile')}"
+					th:errors="*{profile}"></span></td>
+			</tr>
+
+
+		</table>
+		<div class="btn_area_center">
+			<input type="submit" value="登録" class="btn">
+		</div>
+		<input type="submit" class="btn btn-outline-dark mt-3" name="back"
+			value="戻る">
+	</form>
+</body>
+</html>

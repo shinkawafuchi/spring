@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>データ情報変更入力</h1>
+	<form th:action="@{/updatacomfirm}"
+		th:object="${user}" method="post">
+		<div class="form-group">
+			<label class="control-label">名前</label>
+			<!-- ① -->
+			<input class="form-control" type="text" th:field="*{username}" />
+			<input class="form-control" type="hidden" th:field="*{loginid}" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">password</label> <input
+				class="form-control" type="text" th:field="*{password}" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">icon</label> <input class="form-control"
+				type="text" th:field="*{icon}" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">profile</label> <input
+				class="form-control" type="text" th:field="*{profile}" />
+		</div>
+		<button class="btn btn-default" type="submit">更新</button>
+		<input type="submit" class="btn btn-outline-dark mt-3" name="back"
+			value="戻る">
+	</form>
+	<a href="/user/list">キャンセル</a>
+</body>
+</html>

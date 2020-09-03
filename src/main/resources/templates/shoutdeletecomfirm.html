@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<form th:action="@{/shoutdeleteresult}" method="post">
+			<table class="table table-bordered table-striped">
+				<tr>
+					<th>コメント</th>
+					<th>名前</th>
+					<th>性別</th>
+				</tr>
+				<tr th:each="shout:${shout}">
+					<td th:text="${shout.shout}"></td>
+					<td th:text="${shout.shout_username}"></td>
+					<td th:text="${shout.icon}"></td>
+				</tr>
+			</table>
+			<input type="submit" value="削除" class="btn">
+			<input type="submit" class="btn btn-outline-dark mt-3" name="back" value="戻る">
+		</form>
+</body>
+</html>
