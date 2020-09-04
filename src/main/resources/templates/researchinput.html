@@ -9,10 +9,8 @@
 		<table>
 			<tr>
 				<td>性別</td>
-				<td><input type="radio" th:if="${icon == male}" value="male" name="icon" checked="checked"><span>male</span>
-				<input type="radio" th:if="${icon != male}" value="male" name="icon" /><span>male</span>
-					<input type="radio" th:if="${icon == female}" value="female" name="icon" checked="checked"/><span>female</span>
-					<input type="radio" th:if="${icon != female}" value="female" name="icon"/><span>female</span></td>
+				<td><input type="checkbox" th:value="male" th:field="*{icon}" th:checked=checked><span>male</span>
+					<input type="checkbox" th:value="female" th:field="*{icon}" /><span>female</span></td>
 			</tr>
 			<tr>
 				<td>ユーザー名</td>

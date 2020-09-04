@@ -37,12 +37,6 @@ public class UserController {
 	public String input(User user) {
 		return "input";
 	}
-	@RequestMapping(value = "/researchinputreturn", method = RequestMethod.GET)
-	public String researchreturn(Model model) {
-		UserForm user=(UserForm)session.getAttribute("user");
-		model.addAttribute("userForm", user);
-		return "researchinput";
-	}
 
 	//新規登録　確認
 	@RequestMapping(value = "/addcomfirm", method = RequestMethod.POST)
@@ -66,7 +60,6 @@ public class UserController {
 		mav.setViewName("inputcomfirm");
 		return mav;
     }
-
 	//新規登録　セット
 	@RequestMapping(value = "/inputcomfirm", method = RequestMethod.POST)
 	public String add(@Validated User user, BindingResult /* (3) */ result,@RequestParam String loginid,@RequestParam String password,@RequestParam String username,@RequestParam String icon,@RequestParam String profile,Model model) {
@@ -129,9 +122,8 @@ public class UserController {
 	//検索結果 機能
 	@RequestMapping(value = "/researchresult", method = RequestMethod.POST)
 	public ModelAndView Research(ModelAndView mav, @RequestParam String icon, @RequestParam String username,
-			@RequestParam String loginid,@ModelAttribute UserForm user) {
+			@RequestParam String loginid) {
 		mav.setViewName("researchresult");
-		session.setAttribute("user", user);
 		session.setAttribute("icon", icon);
 		session.setAttribute("username", username);
 		session.setAttribute("loginid", loginid);
